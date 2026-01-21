@@ -1,136 +1,43 @@
-name: Deploy to VPS
+name: Deploy Portfolio
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
-  deploy-test-no-build:
-    name: TEST - no build, just verify access + upload index.html
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code (optional)
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Print SSH key fingerprint (from secret)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site (Next export)
+        run: npm run build
+
+      - name: Setup SSH key
         run: |
-          set -e
-          mkdir -p /tmp/sshkey
-          printf "%s" "${{ secrets.VPS_SSH_KEY }}" > /tmp/sshkey/key
-          chmod 600 /tmp/sshkey/key
-          ssh-keygen -lf /tmp/sshkey/key
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
-      # 1) Проверяем SSH и права на запись на VPS
-      - name: Verify SSH access and target permissions
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            set -e
-
-            echo "=== Who am I ==="
-            whoami
-            id
-
-            echo "=== Prepare target dir ==="
-            sudo mkdir -p /srv/apps/portfolio/_test
-            sudo chown -R $USER:$USER /srv/apps/portfolio/_test || true
-
-            echo "=== Check perms ==="
-            ls -ld /srv/apps /srv/apps/portfolio /srv/apps/portfolio/_test || true
-
-            echo "=== Try write test file ==="
-            date > /srv/apps/portfolio/_test/ssh_write_test.txt
-            ls -la /srv/apps/portfolio/_test | head -n 50
-
-      # 2) Создаём простой файл без сборки и деплоим его по SCP
-      - name: Create test index.html (no build)
+      - name: Deploy out/ to VPS
         run: |
-          mkdir -p _deploy_test
-          cat > _deploy_test/index.html <<'EOF'
-          <!doctype html>
-          <html>
-            <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>Portfolio deploy test</title>
-              <style>
-                body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 24px; }
-                code { background: #f4f4f4; padding: 2px 6px; border-radius: 6px; }
-              </style>
-            </head>
-            <body>
-              <h1>Deploy OK</h1>
-              <p>This is a TEST deploy without build.</p>
-              <p>Commit: <code>${{ github.sha }}</code></p>
-              <p>Time (UTC): <code>__TIME__</code></p>
-            </body>
-          </html>
-          EOF
-          sed -i "s/__TIME__/$(date -u +'%Y-%m-%d %H:%M:%S UTC')/" _deploy_test/index.html
-          ls -la _deploy_test
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes \
+            ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} "mkdir -p /srv/apps/portfolio/out"
 
-      - name: Upload test files to VPS (SCP)
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          source: "_deploy_test/**"
-          target: "/srv/apps/portfolio/_test"
-          strip_components: 1
-          # В тесте лучше НЕ удалять директорию целиком
-          rm: false
-
-      - name: Verify uploaded files exist (remote)
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            set -e
-            echo "=== Check uploaded ==="
-            ls -la /srv/apps/portfolio/_test | head -n 100
-            echo "=== Print index.html first lines ==="
-            sed -n '1,30p' /srv/apps/portfolio/_test/index.html || true
-
-  # =========================================================
-  # PROD - вернуть после того, как доступы/права проверены
-  # =========================================================
-  # build-and-deploy:
-  #   name: PROD - build and deploy out/
-  #   runs-on: ubuntu-latest
-  #
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
-  #
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: "20"
-  #         cache: "npm"
-  #
-  #     - name: Install dependencies
-  #       run: npm ci
-  #
-  #     - name: Build static site
-  #       run: npm run build
-  #
-  #     - name: Deploy to VPS (SCP)
-  #       uses: appleboy/scp-action@v0.1.7
-  #       with:
-  #         host: ${{ secrets.VPS_HOST }}
-  #         username: ${{ secrets.VPS_USERNAME }}
-  #         key: ${{ secrets.VPS_SSH_KEY }}
-  #         source: "out/**"
-  #         target: "/srv/apps/portfolio/out"
-  #         strip_components: 1
-  #         # Осторожно: это удаляет target перед загрузкой
-  #         rm: true
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" \
+            out/ \
+            ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }}:/srv/apps/portfolio/out/
