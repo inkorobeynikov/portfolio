@@ -18,6 +18,8 @@ export interface Project {
   title: string;
   description: string;
   role?: string;
+  demoUrl?: string;
+  tags?: string[];
 }
 
 export interface HomeContent {
@@ -94,28 +96,12 @@ export function getAllCaseStudySlugs(): string[] {
 export function getProjects(): Project[] {
   return [
     {
-      title: 'Applicant Center',
+      title: 'Learn Words',
       description:
-        'Enterprise form platform at Helmes. Built internal UI library and schema-driven form generator.',
-      role: 'Lead Frontend Developer / Frontend Architect',
-    },
-    {
-      title: 'Online Bank Launch',
-      description:
-        'Greenfield B2C online banking launch at Clevertec / Alfa Bank. Designed frontend architecture and development processes.',
-      role: 'Frontend Architect',
-    },
-    {
-      title: 'Frontend Department Leadership',
-      description:
-        'Head of frontend department at Clevertec. Grew the team, built internal education programs, mentored engineers.',
-      role: 'Head of Frontend',
-    },
-    {
-      title: 'Travel Web App',
-      description:
-        'Flight search and booking web application at Clickavia. React components, forms, API integration, state design.',
-      role: 'Frontend Developer',
+        'Vocabulary learning app with spaced repetition algorithm (SM-2). Built as a Telegram Mini App with full offline demo mode. Features Italian vocabulary with verb conjugations, multiple exercise types, and progress tracking.',
+      role: 'Full Stack Developer',
+      demoUrl: '/demo',
+      tags: ['React 19', 'Redux Toolkit', 'TypeScript', 'Tailwind CSS', 'Vite', 'i18next'],
     },
   ];
 }

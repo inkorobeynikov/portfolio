@@ -42,6 +42,8 @@ export default function ProjectsPage() {
             title={project.title}
             description={project.description}
             role={project.role}
+            demoUrl={project.demoUrl}
+            tags={project.tags}
           />
         ))}
       </div>
