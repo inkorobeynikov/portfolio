@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex justify-around items-center h-[17vh]">
+      <nav className="hidden md:flex items-center justify-between h-[17vh] mx-4 md:mx-16 lg:mx-40">
         <div className="text-2xl font-semibold cursor-default">
           Ivan Karabeinikau
         </div>
