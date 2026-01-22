@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-// Demo app URL - in dev mode, Vite runs on port 5173
-const DEMO_URL = "http://localhost:5173";
+// Demo app URL
+const DEMO_URL = process.env.NODE_ENV === "development"
+  ? "http://localhost:5173"
+  : "https://demo.learningbot.online";
 
 export default function DemoPage() {
   const [isScrolled, setIsScrolled] = useState(false);
