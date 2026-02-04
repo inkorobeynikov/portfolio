@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 // Demo app URL
-const DEMO_URL = process.env.NODE_ENV === "development"
-  ? "http://localhost:5173"
-  : "https://demo.learningbot.online";
+const DEMO_URL =
+  process.env.NODE_ENV === "development"
+    ? "https://demo.learningbot.online"
+    : "https://demo.learningbot.online";
 
 export default function DemoPage() {
   const [isScrolled, setIsScrolled] = useState(false);
