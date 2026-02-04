@@ -316,8 +316,8 @@ export default function LearnWordsDemoPage() {
                 Игры для закрепления
               </h2>
               <p className="text-[var(--color-text-secondary)] text-center mb-6">
-                4 типа упражнений, которые автоматически подбираются под
-                конкретные слова
+                Интерактивные пазлы для изучения новых слов и закрепления
+                запоминания. Новые типы игр добавляются быстро.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {games.map((game) => (
@@ -334,6 +334,31 @@ export default function LearnWordsDemoPage() {
                     </p>
                   </div>
                 ))}
+              </div>
+
+              {/* Games Demo iframe */}
+              <div className="mt-8">
+                <p className="text-[var(--color-text-muted)] text-sm text-center mb-4">
+                  Попробуйте игры прямо сейчас:
+                </p>
+                <div className="flex justify-center">
+                  <div
+                    className="bg-[var(--color-background-secondary)] rounded-2xl shadow-lg overflow-hidden w-full max-w-[320px]"
+                    style={{ height: "640px" }}
+                  >
+                    <div className="bg-gray-900 h-5 flex items-center justify-center">
+                      <div className="w-16 h-0.5 bg-gray-700 rounded-full" />
+                    </div>
+                    <iframe
+                      src={`${DEMO_URL}/demo`}
+                      title="LearnWords Games Demo"
+                      className="w-full border-0"
+                      style={{ height: "calc(100% - 20px)" }}
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+                      allow="clipboard-write"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
