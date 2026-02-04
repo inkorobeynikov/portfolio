@@ -374,6 +374,22 @@ export default function LearnWordsDemoPage() {
                 устанавливать отдельные приложения
               </p>
               <TelegramCarousel />
+
+              {/* Group mode */}
+              <div className="mt-8 p-5 bg-[var(--color-background-secondary)] rounded-lg">
+                <h3 className="font-medium text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                  <span className="text-xl">👥</span> Групповой режим
+                </h3>
+                <p className="text-[var(--color-text-secondary)] text-sm">
+                  Бот работает в групповых чатах — слова, добавленные одним
+                  участником, автоматически попадают в словари всех членов
+                  группы.
+                </p>
+                <p className="text-[var(--color-text-muted)] text-xs mt-2">
+                  Идеально для преподавателей: добавьте слово один раз — оно
+                  появится у всех учеников
+                </p>
+              </div>
             </div>
 
             {/* SM-2 Algorithm */}
