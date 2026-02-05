@@ -84,7 +84,7 @@ export default function HomePage() {
       <section id="profile">
         <div className="section__pic-container">
           <Image
-            src="/profile.jpg"
+            src="/PROFILE.jpg"
             alt="Ivan Karabeinikau profile picture"
             width={400}
             height={400}
