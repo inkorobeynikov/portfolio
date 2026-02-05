@@ -11,7 +11,7 @@ const DEMO_URL =
     : "https://demo.learningbot.online";
 
 // Telegram bot URL
-const TELEGRAM_BOT_URL = "https://t.me/LearnWordsBot";
+const TELEGRAM_BOT_URL = "https://t.me/learn_new_polish_words_bot";
 
 // Games data
 const games = [
