@@ -21,9 +21,9 @@ export default function Header() {
     <>
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center justify-between h-[17vh] mx-4 md:mx-16 lg:mx-40">
-        <div className="text-2xl font-semibold cursor-default">
+        <Link href="/" className="text-2xl font-semibold hover:text-black">
           Ivan Karabeinikau
-        </div>
+        </Link>
         <div>
           <ul className="flex gap-8 list-none text-xl">
             {navLinks.map((link) => (
@@ -43,9 +43,9 @@ export default function Header() {
       {/* Mobile Navigation */}
       <nav className="relative z-50 md:hidden">
         <div className="flex items-center justify-between h-16 px-5">
-          <div className="text-xl font-semibold cursor-default">
+          <Link href="/" className="text-xl font-semibold hover:text-black">
             Ivan Karabeinikau
-          </div>
+          </Link>
           <div className="relative">
             <div
               className="flex flex-col justify-between h-6 w-8 cursor-pointer"
