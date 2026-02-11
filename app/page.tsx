@@ -98,7 +98,7 @@ export default function HomePage() {
           <p className="section__text__p2">Lead Frontend Developer</p>
           <div className="btn-container">
             <a
-              href="/resume.pdf"
+              href="/KarabeinikauIvanCV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-color-2"
