@@ -89,7 +89,7 @@ export default function ContactPage() {
           <LinkedInIcon />
           <h3 className="font-semibold mt-4 mb-2">LinkedIn</h3>
           <a
-            href="https://linkedin.com/in/ivankarabeinikau"
+            href="https://www.linkedin.com/in/ivan-karabeinikau-9250a8120/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"

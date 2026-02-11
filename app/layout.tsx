@@ -12,7 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ivankarabeinikau.com'),
+  metadataBase: new URL('https://ivank.tech'),
   title: {
     default: 'Ivan Karabeinikau — Lead Frontend Developer',
     template: '%s | Ivan Karabeinikau',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ivankarabeinikau.com',
+    url: 'https://ivank.tech',
     siteName: 'Ivan Karabeinikau',
     title: 'Ivan Karabeinikau — Lead Frontend Developer',
     description:
