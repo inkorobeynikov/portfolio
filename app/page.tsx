@@ -113,7 +113,7 @@ export default function HomePage() {
               <LinkedInIcon />
             </a>
             <a
-              href="https://t.me/vanyakorobeynikov"
+              href="https://t.me/ivankarabeinikau"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Telegram"
@@ -295,12 +295,12 @@ export default function HomePage() {
             <TelegramIcon />
             <p>
               <a
-                href="https://t.me/vanyakorobeynikov"
+                href="https://t.me/ivankarabeinikau"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                @vanyakorobeynikov
+                @ivankarabeinikau
               </a>
             </p>
           </div>

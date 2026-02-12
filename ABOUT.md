@@ -14,7 +14,7 @@ Lead Frontend Developer / Frontend Architect
 **Contacts**
 
 - Email: in.korobeynikov@gmail.com
-- Telegram (preferred): https://t.me/vanyakorobeynikov
+- Telegram (preferred): https://t.me/ivankarabeinikau
 - LinkedIn: <add-link>
 - GitHub: <add-link>
 - Upwork: <add-link>
