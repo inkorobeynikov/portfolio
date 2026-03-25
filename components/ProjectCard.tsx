@@ -4,11 +4,21 @@ interface ProjectCardProps {
   title: string;
   description: string;
   role?: string;
-  demoUrl?: string;
+  href?: string;
+  linkLabel?: string;
+  badge?: string;
   tags?: string[];
 }
 
-export default function ProjectCard({ title, description, role, demoUrl, tags }: ProjectCardProps) {
+export default function ProjectCard({
+  title,
+  description,
+  role,
+  href,
+  linkLabel,
+  badge,
+  tags,
+}: ProjectCardProps) {
   const CardContent = (
     <>
       <div className="flex items-start gap-4">
@@ -22,9 +32,9 @@ export default function ProjectCard({ title, description, role, demoUrl, tags }:
             <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
               {title}
             </h3>
-            {demoUrl && (
-              <span className="text-xs px-2 py-1 bg-[var(--color-primary)] text-white rounded-full">
-                Live Demo
+            {badge && (
+              <span className="text-xs px-2 py-1 bg-[var(--color-accent)] text-white rounded-full">
+                {badge}
               </span>
             )}
           </div>
@@ -46,15 +56,23 @@ export default function ProjectCard({ title, description, role, demoUrl, tags }:
               ))}
             </div>
           )}
+          {href && (
+            <div className="inline-flex items-center gap-2 mt-4 text-sm font-medium text-[var(--color-accent)]">
+              {linkLabel || 'Open Project'}
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          )}
         </div>
       </div>
     </>
   );
 
-  if (demoUrl) {
+  if (href) {
     return (
-      <Link href={demoUrl} className="block no-underline">
-        <article className="details-container color-container p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-[var(--color-primary)]">
+      <Link href={href} className="block no-underline">
+        <article className="details-container color-container p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-[var(--color-accent)]">
           {CardContent}
         </article>
       </Link>

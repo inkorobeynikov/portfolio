@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getHomeContent, getProjects } from "@/lib/content";
+import CaseStudyCard from "@/components/CaseStudyCard";
+import ProjectCard from "@/components/ProjectCard";
+import {
+  getCaseStudySummaries,
+  getHomeContent,
+  getProjects,
+} from "@/lib/content";
 
 // SVG Icons as components
 const LinkedInIcon = () => (
@@ -70,6 +76,8 @@ const EducationIcon = () => (
 
 export default function HomePage() {
   const projects = getProjects();
+  const caseStudies = getCaseStudySummaries();
+  const featuredCaseStudy = caseStudies.find((caseStudy) => caseStudy.featured);
   const { howIHelp, technicalSkills } = getHomeContent();
 
   return (
@@ -78,7 +86,7 @@ export default function HomePage() {
       <section id="profile">
         <div className="section__pic-container">
           <Image
-            src="/profile.JPG"
+            src="/profile.jpg"
             alt="Ivan Karabeinikau profile picture"
             width={400}
             height={400}
@@ -227,42 +235,36 @@ export default function HomePage() {
       {/* Projects Section */}
       <section id="projects" className="relative mx-4 md:mx-16 lg:mx-40 py-16">
         <p className="section__text__p1">Browse My Recent</p>
-        <h1 className="title">Projects</h1>
+        <h1 className="title">Projects & Case Studies</h1>
         <div className="experience-details-container mt-8">
-          <div className="about-containers flex-wrap justify-center">
-            {projects.slice(0, 3).map((project) => (
-              <div
-                key={project.title}
-                className="details-container color-container max-w-sm"
-              >
-                <div className="article-container">
-                  <div className="w-full h-48 bg-gray-200 rounded-2xl flex items-center justify-center mb-4">
-                    <span className="text-gray-400 text-lg">
-                      {project.title}
-                    </span>
-                  </div>
-                </div>
-                <h2 className="experience-sub-title project-title">
-                  {project.title}
-                </h2>
-                <p className="text-[var(--color-text-secondary)] text-sm mb-4 px-2">
-                  {project.description}
-                </p>
-                {project.role && (
-                  <p className="text-[var(--color-text-muted)] text-xs mb-4">
-                    {project.role}
-                  </p>
-                )}
-                <div className="btn-container">
-                  <Link
-                    href="/projects"
-                    className="btn btn-color-2 project-btn text-sm"
-                  >
-                    View Details
-                  </Link>
-                </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.95fr)] lg:items-start">
+              {featuredCaseStudy && (
+                <CaseStudyCard
+                  title={featuredCaseStudy.title}
+                  type={featuredCaseStudy.type}
+                  description={featuredCaseStudy.description}
+                  slug={featuredCaseStudy.slug}
+                  status={featuredCaseStudy.status}
+                  featured
+                />
+              )}
+
+              <div className="grid gap-6">
+                {projects.map((project) => (
+                  <ProjectCard
+                    key={project.title}
+                    title={project.title}
+                    description={project.description}
+                    role={project.role}
+                    href={project.href}
+                    linkLabel={project.linkLabel}
+                    badge={project.badge}
+                    tags={project.tags}
+                  />
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
         <div className="text-center mt-8">

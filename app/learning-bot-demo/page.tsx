@@ -578,7 +578,7 @@ export default function LearnWordsDemoPage() {
                 >
                   Открыть в Telegram
                 </a>
-                <Link href="/demo" className="btn btn-color-2">
+                <Link href="/learning-words" className="btn btn-color-2">
                   Техническое описание
                 </Link>
               </div>

@@ -1,11 +1,36 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CaseStudyGallery, { type CaseStudyScreenshot } from '@/components/CaseStudyGallery';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { getCaseStudy, getAllCaseStudySlugs } from '@/lib/content';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+function getCaseStudyScreenshots(frontmatter: Record<string, unknown>): CaseStudyScreenshot[] {
+  const rawScreenshots = frontmatter.screenshots;
+
+  if (!Array.isArray(rawScreenshots)) {
+    return [];
+  }
+
+  return rawScreenshots.flatMap((item) => {
+    if (!item || typeof item !== 'object') {
+      return [];
+    }
+
+    const src = typeof item.src === 'string' ? item.src : '';
+    const alt = typeof item.alt === 'string' ? item.alt : '';
+    const caption = typeof item.caption === 'string' ? item.caption : undefined;
+
+    if (!src || !alt) {
+      return [];
+    }
+
+    return [{ src, alt, caption }];
+  });
 }
 
 export async function generateStaticParams() {
@@ -43,6 +68,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!caseStudy) {
     notFound();
   }
+
+  const screenshots = getCaseStudyScreenshots(caseStudy.frontmatter);
 
   return (
     <article className="section">
@@ -82,6 +109,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         {/* Content */}
         <MarkdownRenderer html={caseStudy.html} />
+
+        <CaseStudyGallery items={screenshots} />
 
         {/* Footer CTA */}
         <div className="mt-16 pt-8 border-t border-[var(--color-border)]">
