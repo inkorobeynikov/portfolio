@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import profilePic from "@/public/profile.jpg";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ProjectCard from "@/components/ProjectCard";
 import {
@@ -86,7 +87,7 @@ export default function HomePage() {
       <section id="profile">
         <div className="section__pic-container">
           <Image
-            src="/profile.jpg"
+            src={profilePic}
             alt="Ivan Karabeinikau profile picture"
             width={400}
             height={400}
