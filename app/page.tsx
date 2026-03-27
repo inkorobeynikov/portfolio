@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import profilePic from "@/public/profile.jpg";
+import profilePic from "@/public/profile-photo.jpg";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ProjectCard from "@/components/ProjectCard";
 import {
