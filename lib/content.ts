@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import { getMarkdownContent, getMarkdownFile } from './markdown';
+import fs from "fs";
+import path from "path";
+import { getMarkdownContent, getMarkdownFile } from "./markdown";
 
-const CASE_STUDIES_DIR = 'content/case-studies';
-const HOME_CONTENT_FILE = 'content/home.md';
+const CASE_STUDIES_DIR = "content/case-studies";
+const HOME_CONTENT_FILE = "content/home.md";
 
 export interface CaseStudy {
   slug: string;
@@ -50,18 +50,16 @@ export interface HomeContent {
   };
 }
 
-
 export function getHomeContent(): HomeContent {
   const { frontmatter } = getMarkdownFile(HOME_CONTENT_FILE);
-  const howIHelp =
-    (frontmatter.howIHelp as HomeContent['howIHelp']) || {
-      title: '',
-      text: '',
-      bullets: [],
-    };
+  const howIHelp = (frontmatter.howIHelp as HomeContent["howIHelp"]) || {
+    title: "",
+    text: "",
+    bullets: [],
+  };
   const technicalSkills =
-    (frontmatter.technicalSkills as HomeContent['technicalSkills']) || {
-      title: '',
+    (frontmatter.technicalSkills as HomeContent["technicalSkills"]) || {
+      title: "",
       categories: [],
     };
 
@@ -84,8 +82,8 @@ export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
   return {
     slug,
     title: (frontmatter.title as string) || slug,
-    type: (frontmatter.type as string) || '',
-    status: (frontmatter.status as string) || '',
+    type: (frontmatter.type as string) || "",
+    status: (frontmatter.status as string) || "",
     html,
     frontmatter,
   };
@@ -100,8 +98,8 @@ export function getAllCaseStudySlugs(): string[] {
 
   const files = fs.readdirSync(fullPath);
   return files
-    .filter((file) => file.endsWith('.md'))
-    .map((file) => file.replace(/\.md$/, ''));
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => file.replace(/\.md$/, ""));
 }
 
 export function getCaseStudySummaries(): CaseStudySummary[] {
@@ -113,17 +111,19 @@ export function getCaseStudySummaries(): CaseStudySummary[] {
 
   return fs
     .readdirSync(fullPath)
-    .filter((file) => file.endsWith('.md'))
+    .filter((file) => file.endsWith(".md"))
     .map((file) => {
-      const slug = file.replace(/\.md$/, '');
-      const { frontmatter } = getMarkdownFile(path.join(CASE_STUDIES_DIR, file));
+      const slug = file.replace(/\.md$/, "");
+      const { frontmatter } = getMarkdownFile(
+        path.join(CASE_STUDIES_DIR, file),
+      );
 
       return {
         slug,
         title: (frontmatter.title as string) || slug,
-        type: (frontmatter.type as string) || 'Case Study',
-        status: (frontmatter.status as string) || '',
-        description: (frontmatter.description as string) || '',
+        type: (frontmatter.type as string) || "Case Study",
+        status: (frontmatter.status as string) || "",
+        description: (frontmatter.description as string) || "",
         featured: Boolean(frontmatter.featured),
       };
     })
@@ -139,14 +139,37 @@ export function getCaseStudySummaries(): CaseStudySummary[] {
 export function getProjects(): Project[] {
   return [
     {
-      title: 'Learn Words',
+      title: "Polish Treasury Bond Calculator",
       description:
-        'Vocabulary learning app with spaced repetition algorithm (SM-2). Built as a Telegram Mini App with full offline demo mode. Features Italian vocabulary with verb conjugations, multiple exercise types, and progress tracking.',
-      role: 'Full Stack Developer',
-      href: '/learning-words',
-      linkLabel: 'Open Project',
-      badge: 'Live Demo',
-      tags: ['React 19', 'Redux Toolkit', 'TypeScript', 'Tailwind CSS', 'Vite', 'i18next'],
+        "Interactive calculator that compares 7 Polish treasury bond series against bank deposits over a custom investment horizon. Models macro scenarios (inflation, NBP rate, WIBOR), accounts for Belka tax & IKE exemption, early redemption fees, and multi-year rollovers — all in a single-page tool.",
+      role: "Product & Full Stack Developer",
+      href: "/obligacje",
+      linkLabel: "Open Calculator",
+      badge: "Live Demo",
+      tags: [
+        "Next.js",
+        "TypeScript",
+        "Recharts",
+        "Tailwind CSS",
+        "Static Export",
+      ],
+    },
+    {
+      title: "Learn Words application and bot",
+      description:
+        "Vocabulary learning app with spaced repetition algorithm (SM-2). Built as a Telegram Mini App with full offline demo mode. Features Italian vocabulary with verb conjugations, multiple exercise types, and progress tracking.",
+      role: "Full Stack Developer",
+      href: "/learning-words",
+      linkLabel: "Open Project",
+      badge: "Live Demo",
+      tags: [
+        "React 19",
+        "Redux Toolkit",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "i18next",
+      ],
     },
   ];
 }

@@ -1,5 +1,5 @@
 ---
-title: "Building a Web Digital Banking Platform for a Large Commercial Bank in Eastern Europe"
+title: "Building a Web Digital Banking Platform"
 type: "Enterprise Banking / Greenfield / Technical Leadership"
 status: "Delivered"
 featured: true

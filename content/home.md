@@ -1,17 +1,17 @@
 ---
 title: "Ivan Karabeinikau - Portfolio"
-description: "Lead Frontend Developer / Frontend Architect specializing in frontend architecture, refactoring & stabilization, internal tools & automation, and AI-assisted workflows."
+description: "Product Engineer / Frontend Architect — building digital financial tools end-to-end, from product idea to production. Specializing in fintech, frontend architecture, and AI-assisted development."
 howIHelp:
   title: "How I help projects"
   text: |
-    I help teams design, launch, stabilize, and scale complex frontend systems — from initial architecture to production-ready delivery. I’m usually brought in when a project needs clear architecture, predictable delivery, or serious refactoring — not just more code.
+    I help teams turn product ideas into working digital tools — from initial concept and UX through architecture and production-ready delivery. I'm usually brought in when a project needs someone who can own both the product logic and the technical execution.
   bullets:
+    - "Turn business requirements into working digital products"
     - "Build frontend systems end-to-end — from zero to production"
     - "Design scalable frontend architecture"
-    - "Refactor and stabilize legacy codebases"
-    - "Build internal tools and automation"
-    - "Integrate AI-assisted workflows"
-    - "Support teams as a technical leader"
+    - "Create fintech tools: calculators, dashboards, data visualizations"
+    - "Integrate AI-assisted development workflows"
+    - "Bridge the gap between product vision and technical execution"
 technicalSkills:
   title: "Technical skills"
   categories:
@@ -47,5 +47,16 @@ technicalSkills:
         - "Vercel"
         - "Automated testing & coverage"
         - "Environment-based deployments"
+    - title: "Product & Delivery"
+      level: "Experienced"
+      description: |
+        Comfortable working across the full product lifecycle — from hypothesis and UX to MVP launch and iteration.
+        Hands-on experience building financial tools, data-driven interfaces, and AI-assisted workflows.
+      items:
+        - "MVP scoping & rapid prototyping"
+        - "UX for financial & data-heavy interfaces"
+        - "AI-assisted development (Claude Code, Copilot)"
+        - "Product analytics & iteration"
+        - "Static site generation & performance optimization"
 ---
 

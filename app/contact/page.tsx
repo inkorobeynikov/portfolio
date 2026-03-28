@@ -30,6 +30,12 @@ const TelegramIcon = () => (
   </svg>
 );
 
+const WhatsAppIcon = () => (
+  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.52 3.48A11.9 11.9 0 0012.04 0C5.54 0 .26 5.28.26 11.78c0 2.07.54 4.1 1.56 5.88L0 24l6.5-1.7a11.8 11.8 0 005.54 1.41h.01c6.5 0 11.78-5.28 11.78-11.78 0-3.15-1.23-6.11-3.31-8.45zm-8.48 18.2h-.01a9.88 9.88 0 01-5.03-1.37l-.36-.21-3.86 1.01 1.03-3.76-.23-.38a9.85 9.85 0 01-1.51-5.19c0-5.45 4.43-9.88 9.89-9.88 2.64 0 5.11 1.03 6.98 2.9a9.8 9.8 0 012.89 6.98c0 5.45-4.44 9.89-9.89 9.89zm5.42-7.42c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5a8.98 8.98 0 01-1.68-2.1c-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.07 2.88 1.22 3.08.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.62.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+  </svg>
+);
+
 const LinkedInIcon = () => (
   <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -38,11 +44,11 @@ const LinkedInIcon = () => (
 
 export default function ContactPage() {
   const services = [
+    "Product development: from idea and UX to working MVP",
     "Frontend architecture: scalable app structure, module boundaries, standards, DX",
-    "Refactoring & stabilization: reduce regressions, improve maintainability",
+    "Fintech tools: calculators, dashboards, data-driven interfaces",
     "Greenfield launches: setup from zero, CI/CD, conventions, core app skeleton",
-    "Internal tools & automation: developer tooling, pipelines, admin tooling",
-    "Testing strategy: pragmatic unit + e2e coverage (Playwright/Cypress/Jest)",
+    "AI-assisted development: Claude Code, Copilot, custom agent workflows",
   ];
 
   return (
@@ -73,13 +79,13 @@ export default function ContactPage() {
         <p className="section__text__p1">Get in Touch</p>
         <h1 className="title">Contact Me</h1>
         <p className="text-[var(--color-text-secondary)] mt-4">
-          I&apos;m available for Upwork, part-time, consulting, and short-term
-          projects.
+          I&apos;m open to product engineering roles, consulting, and
+          collaboration on fintech projects.
         </p>
       </div>
 
       {/* Contact Cards */}
-      <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12 max-w-5xl mx-auto">
         {/* Email */}
         <div className="details-container">
           <EmailIcon />
@@ -103,6 +109,20 @@ export default function ContactPage() {
             className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
           >
             @ivankarabeinikau
+          </a>
+        </div>
+
+        {/* WhatsApp */}
+        <div className="details-container">
+          <WhatsAppIcon />
+          <h3 className="font-semibold mt-4 mb-2">WhatsApp</h3>
+          <a
+            href="https://wa.me/48500330884"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+          >
+            +48 500 330 884
           </a>
         </div>
 
@@ -133,7 +153,7 @@ export default function ContactPage() {
           Timezone: Europe/Warsaw
         </p>
         <p className="text-[var(--color-text-muted)] mt-2 text-sm">
-          Upwork · Part-time · Consulting · Short-term projects
+          Product roles · Consulting · Fintech projects
         </p>
       </div>
 
@@ -186,6 +206,14 @@ export default function ContactPage() {
             className="btn btn-color-2"
           >
             Message on Telegram
+          </a>
+          <a
+            href="https://wa.me/48500330884"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-color-2"
+          >
+            Message on WhatsApp
           </a>
         </div>
       </div>

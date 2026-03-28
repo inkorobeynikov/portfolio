@@ -128,6 +128,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
               >
                 Get in touch
               </a>
+              <a
+                href="https://wa.me/48500330884"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-xl font-medium no-underline hover:border-[var(--color-text-muted)] transition-colors"
+              >
+                Message on WhatsApp
+              </a>
               <Link
                 href="/projects"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-xl font-medium no-underline hover:border-[var(--color-text-muted)] transition-colors"

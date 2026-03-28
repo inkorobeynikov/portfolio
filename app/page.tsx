@@ -22,6 +22,12 @@ const TelegramIcon = () => (
   </svg>
 );
 
+const WhatsAppIcon = () => (
+  <svg className="icon" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.52 3.48A11.9 11.9 0 0012.04 0C5.54 0 .26 5.28.26 11.78c0 2.07.54 4.1 1.56 5.88L0 24l6.5-1.7a11.8 11.8 0 005.54 1.41h.01c6.5 0 11.78-5.28 11.78-11.78 0-3.15-1.23-6.11-3.31-8.45zm-8.48 18.2h-.01a9.88 9.88 0 01-5.03-1.37l-.36-.21-3.86 1.01 1.03-3.76-.23-.38a9.85 9.85 0 01-1.51-5.19c0-5.45 4.43-9.88 9.89-9.88 2.64 0 5.11 1.03 6.98 2.9a9.8 9.8 0 012.89 6.98c0 5.45-4.44 9.89-9.89 9.89zm5.42-7.42c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5a8.98 8.98 0 01-1.68-2.1c-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.07 2.88 1.22 3.08.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.62.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+  </svg>
+);
+
 const EmailIcon = () => (
   <svg
     className="icon email-icon"
@@ -98,7 +104,7 @@ export default function HomePage() {
         <div className="section__text">
           <p className="section__text__p1">Hello, I&apos;m</p>
           <h1 className="title">Ivan Karabeinikau</h1>
-          <p className="section__text__p2">Lead Frontend Developer</p>
+          <p className="section__text__p2">Product Engineer / Frontend Architect</p>
           <div className="btn-container">
             <a
               href="/KarabeinikauIvanCV.pdf"
@@ -128,6 +134,14 @@ export default function HomePage() {
               aria-label="Telegram"
             >
               <TelegramIcon />
+            </a>
+            <a
+              href="https://wa.me/48500330884"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppIcon />
             </a>
           </div>
         </div>
@@ -171,13 +185,11 @@ export default function HomePage() {
             </div>
             <div className="text-container">
               <p>
-                Lead Frontend Developer / Frontend Architect with a focus on
-                building and stabilizing complex frontend systems. From
-                greenfield launches and architectural decisions to refactoring
-                legacy codebases and creating internal tooling that speeds up
-                delivery. I work with React, Next.js, TypeScript, and Node.js
-                ecosystem. Available for Upwork, part-time, consulting, and
-                short-term projects.
+                Product Engineer and Frontend Architect — I build digital products
+                end-to-end, from idea and UX to production-ready code. Strong
+                focus on fintech and financial tools. I combine product thinking
+                with deep engineering expertise in React, Next.js, TypeScript,
+                and Node.js to ship products that actually solve user problems.
               </p>
             </div>
           </div>
@@ -208,7 +220,7 @@ export default function HomePage() {
       <section id="skills" className="relative mx-4 md:mx-16 lg:mx-40 py-16">
         <h1 className="title">{technicalSkills.title}</h1>
         <div className="experience-details-container mt-8">
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {technicalSkills.categories.map((category) => (
               <div key={category.title} className="details-container text-left">
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -239,7 +251,7 @@ export default function HomePage() {
         <h1 className="title">Projects & Case Studies</h1>
         <div className="experience-details-container mt-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.95fr)] lg:items-start">
+            <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
               {featuredCaseStudy && (
                 <CaseStudyCard
                   title={featuredCaseStudy.title}
@@ -250,21 +262,18 @@ export default function HomePage() {
                   featured
                 />
               )}
-
-              <div className="grid gap-6">
-                {projects.map((project) => (
-                  <ProjectCard
-                    key={project.title}
-                    title={project.title}
-                    description={project.description}
-                    role={project.role}
-                    href={project.href}
-                    linkLabel={project.linkLabel}
-                    badge={project.badge}
-                    tags={project.tags}
-                  />
-                ))}
-              </div>
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.title}
+                  title={project.title}
+                  description={project.description}
+                  role={project.role}
+                  href={project.href}
+                  linkLabel={project.linkLabel}
+                  badge={project.badge}
+                  tags={project.tags}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -304,6 +313,19 @@ export default function HomePage() {
                 className="hover:underline"
               >
                 @ivankarabeinikau
+              </a>
+            </p>
+          </div>
+          <div className="contact-info-container">
+            <WhatsAppIcon />
+            <p>
+              <a
+                href="https://wa.me/48500330884"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                WhatsApp
               </a>
             </p>
           </div>
