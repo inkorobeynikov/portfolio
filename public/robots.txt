@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ivankarabeinikau.com/sitemap.xml
+Sitemap: https://ivank.tech/sitemap.xml

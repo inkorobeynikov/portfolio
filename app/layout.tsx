@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: '%s | Ivan Karabeinikau',
   },
   description:
-    'Lead Frontend Developer / Frontend Architect specializing in frontend architecture, refactoring & stabilization, internal tools & automation, and AI-assisted workflows.',
+    'Product Engineer and Frontend Architect helping fintech teams build, stabilize, and scale React, Next.js, and TypeScript products.',
   keywords: [
     'Frontend Developer',
     'Frontend Architect',

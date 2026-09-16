@@ -5,8 +5,6 @@ status: "Active"
 description: "Admin web app and API for managing a language-learning Telegram bot. Multi-language support, AI-assisted content generation, and comprehensive word/user management."
 ---
 
-# Learning Bot Admin
-
 An admin web app + API for inspecting and managing data for a language-learning Telegram bot.
 
 ---

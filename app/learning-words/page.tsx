@@ -107,9 +107,9 @@ export default function LearningWordsPage() {
 
           <div>
             <div className="max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 Product features
-              </h3>
+              </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {[
                   {
@@ -145,9 +145,9 @@ export default function LearningWordsPage() {
                     key={feature.title}
                     className="p-4 bg-[var(--color-background-secondary)] rounded-lg"
                   >
-                    <h4 className="font-medium text-[var(--color-text-primary)]">
+                    <h3 className="font-medium text-[var(--color-text-primary)]">
                       {feature.title}
-                    </h4>
+                    </h3>
                     <p className="text-sm text-[var(--color-text-muted)]">
                       {feature.desc}
                     </p>
@@ -157,9 +157,9 @@ export default function LearningWordsPage() {
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 System architecture
-              </h3>
+              </h2>
               <div className="p-6 bg-[var(--color-background-secondary)] rounded-lg">
                 <p className="text-[var(--color-text-secondary)] mb-4">
                   The product is built as a three-part system designed for real
@@ -188,9 +188,9 @@ export default function LearningWordsPage() {
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 Demo vs production
-              </h3>
+              </h2>
               <div className="p-6 bg-[var(--color-background-secondary)] rounded-lg">
                 <p className="text-[var(--color-text-secondary)] mb-4">
                   This demo version runs entirely on mock data to showcase the
@@ -214,9 +214,9 @@ export default function LearningWordsPage() {
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 AI & automation
-              </h3>
+              </h2>
               <div className="p-6 bg-[var(--color-background-secondary)] rounded-lg">
                 <p className="text-[var(--color-text-secondary)] mb-4">
                   The production version integrates with the OpenAI API to
@@ -232,9 +232,9 @@ export default function LearningWordsPage() {
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 DevOps & delivery
-              </h3>
+              </h2>
               <div className="p-6 bg-[var(--color-background-secondary)] rounded-lg">
                 <p className="text-[var(--color-text-secondary)] mb-4">
                   The entire system is designed with production readiness in
@@ -250,9 +250,9 @@ export default function LearningWordsPage() {
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 Multi-language support
-              </h3>
+              </h2>
               <div className="p-6 bg-[var(--color-background-secondary)] rounded-lg">
                 <p className="text-[var(--color-text-secondary)] mb-4">
                   The system is designed to scale to new languages with minimal
@@ -270,9 +270,9 @@ export default function LearningWordsPage() {
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-4 text-center">
                 Project scope & timeline
-              </h3>
+              </h2>
               <div className="p-6 bg-[var(--color-background-secondary)] rounded-lg">
                 <p className="text-[var(--color-text-secondary)] mb-4">
                   This project was designed, built, and delivered solo in one

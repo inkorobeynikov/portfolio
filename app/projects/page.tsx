@@ -7,6 +7,9 @@ import { getCaseStudySummaries, getProjects } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'Projects & Case Studies',
   description: 'Selected case studies and interactive projects from Ivan Karabeinikau, Lead Frontend Developer.',
+  alternates: {
+    canonical: '/projects',
+  },
 };
 
 export default function ProjectsPage() {

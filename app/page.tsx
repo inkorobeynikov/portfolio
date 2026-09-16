@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import profilePic from "@/public/profile-photo.jpg";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ProjectCard from "@/components/ProjectCard";
@@ -8,6 +9,91 @@ import {
   getHomeContent,
   getProjects,
 } from "@/lib/content";
+
+const siteUrl = "https://ivank.tech";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
+
+const faqItems = [
+  {
+    question: "What kinds of projects do you take on?",
+    answer:
+      "I work on fintech products, data-heavy interfaces, frontend architecture, and full product builds from an initial idea through a production launch.",
+  },
+  {
+    question: "Can you improve an existing frontend codebase?",
+    answer:
+      "Yes. I help teams stabilize legacy React and Next.js applications, simplify overgrown architecture, improve developer experience, and make delivery more predictable.",
+  },
+  {
+    question: "Can you build an MVP end to end?",
+    answer:
+      "Yes. I can shape the product and UX, design the architecture, implement the frontend and supporting backend services, and set up deployment and automation.",
+  },
+  {
+    question: "How can we discuss a project?",
+    answer:
+      "Send me an email, Telegram message, WhatsApp message, or LinkedIn note with a short description of the product, current challenge, and desired timeline.",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Ivan Karabeinikau",
+      url: siteUrl,
+      description:
+        "Product Engineer and Frontend Architect specializing in fintech products, frontend architecture, codebase stabilization, internal tools, automation, and AI-assisted workflows.",
+      email: "mailto:in.korobeynikov@gmail.com",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "business inquiries",
+        email: "in.korobeynikov@gmail.com",
+        telephone: "+48-500-330-884",
+        availableLanguage: ["English", "Polish", "Russian"],
+      },
+      sameAs: [
+        "https://www.linkedin.com/in/ivan-karabeinikau-9250a8120/",
+        "https://t.me/ivankarabeinikau",
+      ],
+    },
+    {
+      "@type": "Service",
+      "@id": `${siteUrl}/#frontend-product-engineering`,
+      name: "Frontend architecture and product engineering",
+      url: siteUrl,
+      description:
+        "End-to-end product development, frontend architecture, React and Next.js implementation, legacy stabilization, fintech interfaces, and delivery automation.",
+      provider: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Product teams, startups, and fintech companies",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}/#faq`,
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
+        },
+      })),
+    },
+  ],
+};
 
 // SVG Icons as components
 const LinkedInIcon = () => (
@@ -89,6 +175,12 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Profile Section */}
       <section id="profile">
         <div className="section__pic-container">
@@ -150,7 +242,7 @@ export default function HomePage() {
       {/* About Section */}
       <section id="about" className="relative mx-4 md:mx-16 lg:mx-40 py-16">
         <p className="section__text__p1">Get To Know More</p>
-        <h1 className="title">About Me</h1>
+        <h2 className="title">About Me</h2>
         <div className="section-container mt-8">
           <div className="about-details-container">
             <div className="about-containers">
@@ -201,7 +293,7 @@ export default function HomePage() {
         id="how-i-help"
         className="relative mx-4 md:mx-16 lg:mx-40 py-16"
       >
-        <h1 className="title">{howIHelp.title}</h1>
+        <h2 className="title">{howIHelp.title}</h2>
         <div className="experience-details-container mt-8">
           <div className="details-container text-left">
             <p className="text-[var(--color-text-secondary)] leading-relaxed whitespace-pre-line">
@@ -218,15 +310,15 @@ export default function HomePage() {
 
       {/* Technical Skills Section */}
       <section id="skills" className="relative mx-4 md:mx-16 lg:mx-40 py-16">
-        <h1 className="title">{technicalSkills.title}</h1>
+        <h2 className="title">{technicalSkills.title}</h2>
         <div className="experience-details-container mt-8">
           <div className="grid gap-6 md:grid-cols-2">
             {technicalSkills.categories.map((category) => (
               <div key={category.title} className="details-container text-left">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">
+                  <h3 className="text-xl font-semibold text-[var(--color-text-primary)]">
                     {category.title}
-                  </h2>
+                  </h3>
                   <span className="text-xs uppercase tracking-wider text-[var(--color-text-muted)]">
                     {category.level}
                   </span>
@@ -248,7 +340,7 @@ export default function HomePage() {
       {/* Projects Section */}
       <section id="projects" className="relative mx-4 md:mx-16 lg:mx-40 py-16">
         <p className="section__text__p1">Browse My Recent</p>
-        <h1 className="title">Projects & Case Studies</h1>
+        <h2 className="title">Projects & Case Studies</h2>
         <div className="experience-details-container mt-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
@@ -290,7 +382,7 @@ export default function HomePage() {
         className="flex justify-center flex-col mx-4 md:mx-16 lg:mx-40 py-16"
       >
         <p className="section__text__p1">Get in Touch</p>
-        <h1 className="title">Contact Me</h1>
+        <h2 className="title">Contact Me</h2>
         <div className="contact-info-upper-container">
           <div className="contact-info-container">
             <EmailIcon />
@@ -342,6 +434,27 @@ export default function HomePage() {
               </a>
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions Section */}
+      <section
+        id="faq"
+        className="relative mx-4 md:mx-16 lg:mx-40 py-16"
+      >
+        <p className="section__text__p1">Common Questions</p>
+        <h2 className="title">Frequently Asked Questions</h2>
+        <div className="max-w-4xl mx-auto mt-8 grid gap-4">
+          {faqItems.map(({ question, answer }) => (
+            <article key={question} className="details-container text-left">
+              <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
+                {question}
+              </h3>
+              <p className="mt-3 text-[var(--color-text-secondary)] leading-relaxed">
+                {answer}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
     </>

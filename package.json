@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "audit:aeo": "npm run build && node scripts/check-aeo.mjs",
     "start": "next start",
     "lint": "next lint"
   },

@@ -19,13 +19,13 @@ screenshots:
     caption: "Cross-currency transfer flow between own accounts with transparent conversion rate and resulting amount."
 ---
 
-# Business Context
+## Business Context
 
 As part of a broader digital transformation program, the bank started building a new web digital banking platform from scratch. The goal was to create a full-featured browser banking experience covering core retail journeys such as account opening, payments, transfers, currency exchange, and product onboarding.
 
 The platform was designed for both desktop and mobile browsers, with different interaction patterns depending on the device context. The longer-term product direction also included readiness for Progressive Web App capabilities.
 
-## My Role
+### My Role
 
 I worked as **Technical Lead** and was responsible for:
 
@@ -43,7 +43,7 @@ The delivery team included:
 
 Backlog ownership stayed with product stakeholders, while I worked closely with them to keep technical execution predictable and delivery disciplined.
 
-## Delivery Model
+### Delivery Model
 
 The project followed a greenfield delivery model:
 
@@ -53,7 +53,7 @@ The project followed a greenfield delivery model:
 
 From the start, the architecture was shaped for long-term scalability rather than a one-off MVP shortcut.
 
-## Product Scope
+### Product Scope
 
 The delivered platform covered:
 
@@ -66,7 +66,7 @@ The delivered platform covered:
 
 Special attention was given to mobile web UX, including adaptive navigation, touch-friendly interactions, and performance optimization for complex financial workflows.
 
-## Key Engineering Challenges
+### Key Engineering Challenges
 
 One of the main technical challenges was delivering a native-like experience inside a browser for high-friction financial flows.
 
@@ -78,7 +78,7 @@ To address that, I drove deep exploration of modern browser APIs and interaction
 
 The main architectural goal was not only to ship the first release, but to create a frontend foundation that could support continuous product growth under banking-grade constraints.
 
-## High-Impact Features
+### High-Impact Features
 
 Under my technical leadership, the team delivered several features with particularly strong user impact:
 
@@ -88,7 +88,7 @@ Under my technical leadership, the team delivered several features with particul
 
 These capabilities materially improved usability and brought the experience closer to the standards users expect from modern digital banking products.
 
-## Impact
+### Impact
 
 The resulting architecture and delivery model enabled:
 

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Ivan Karabeinikau for frontend development, architecture, and consulting.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 // SVG Icons
@@ -89,7 +92,7 @@ export default function ContactPage() {
         {/* Email */}
         <div className="details-container">
           <EmailIcon />
-          <h3 className="font-semibold mt-4 mb-2">Email</h3>
+          <h2 className="font-semibold mt-4 mb-2">Email</h2>
           <a
             href="mailto:in.korobeynikov@gmail.com"
             className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
@@ -101,7 +104,7 @@ export default function ContactPage() {
         {/* Telegram */}
         <div className="details-container">
           <TelegramIcon />
-          <h3 className="font-semibold mt-4 mb-2">Telegram (preferred)</h3>
+          <h2 className="font-semibold mt-4 mb-2">Telegram (preferred)</h2>
           <a
             href="https://t.me/ivankarabeinikau"
             target="_blank"
@@ -115,7 +118,7 @@ export default function ContactPage() {
         {/* WhatsApp */}
         <div className="details-container">
           <WhatsAppIcon />
-          <h3 className="font-semibold mt-4 mb-2">WhatsApp</h3>
+          <h2 className="font-semibold mt-4 mb-2">WhatsApp</h2>
           <a
             href="https://wa.me/48500330884"
             target="_blank"
@@ -129,7 +132,7 @@ export default function ContactPage() {
         {/* LinkedIn */}
         <div className="details-container">
           <LinkedInIcon />
-          <h3 className="font-semibold mt-4 mb-2">LinkedIn</h3>
+          <h2 className="font-semibold mt-4 mb-2">LinkedIn</h2>
           <a
             href="https://www.linkedin.com/in/ivan-karabeinikau-9250a8120/"
             target="_blank"
